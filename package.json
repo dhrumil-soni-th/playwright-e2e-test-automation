@@ -1,0 +1,18 @@
+{
+  "name": "playwright-e2e-test-automation",
+  "version": "1.0.0",
+  "description": "Playwright E2E Tests with AI capabilities including MCP Server",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "playwright",
+    "playwright-e2e-tests",
+    "playwright-mcp"
+  ],
+  "author": "Dhrumil Soni",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.8.1"
+  }
+}
