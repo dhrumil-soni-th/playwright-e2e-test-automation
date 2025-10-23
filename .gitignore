@@ -12,3 +12,4 @@ node_modules/
 /allure-results/
 /example.*
 /*.log
+tests/test-*.spec.ts

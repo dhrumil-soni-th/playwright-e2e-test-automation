@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "Playwright E2E Tests with AI capabilities including MCP Server",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "login": "npx playwright test tests/functional/login.spec.ts --headed",
+    "demo_chromium": "npx playwright test tests/demo/mytest.spec.ts --headed --project=chromium",
+    "demo_edge": "npx playwright test tests/demo/mytest.spec.ts --headed --project=Edge",
+    "book_appointment": "npx playwright test tests/functional/appointmentBook.spec.ts --headed"
+  },
   "keywords": [
     "playwright",
     "playwright-e2e-tests",
