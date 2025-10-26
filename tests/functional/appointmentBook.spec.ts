@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Book Appointment Functionality", () => {
-  test.beforeEach("Do login", async ({ page }) => {
+  test.beforeEach("Do login with valid credentials", async ({ page }) => {
     // Launch application and assert title and header
     await page.goto("https://katalon-demo-cura.herokuapp.com/");
     await expect(page).toHaveTitle("CURA Healthcare Service");
@@ -18,16 +18,30 @@ test.describe("Book Appointment Functionality", () => {
     await expect(page.locator("h2")).toHaveText("Make Appointment");
   });
 
-  test("Appointment Book Flow using codegen", async ({ page }) => {
+  test("Should make an appointment with non-default values", async ({
+    page,
+  }) => {
     // Fill appointment form
+
+    // Dropdown selection
+    await page
+      .getByLabel("Facility")
+      .selectOption("Hongkong CURA Healthcare Center");
+
+    // Checkbox and radio button selections
     await page
       .getByRole("checkbox", { name: "Apply for hospital readmission" })
       .check();
     await page.getByRole("radio", { name: "Medicaid" }).check();
+
     await page.getByRole("textbox", { name: "Visit Date (Required)" }).click();
     await page.getByRole("cell", { name: "25", exact: true }).click();
+
+    // Multi-line text input
     await page.getByRole("textbox", { name: "Comment" }).click();
     await page.getByRole("textbox", { name: "Comment" }).fill("Testing");
+
+    // Button click to book appointment
     await page.getByRole("button", { name: "Book Appointment" }).click();
 
     // Assert appointment confirmation
